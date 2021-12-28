@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Creating First EC2 instance using CFTemaplate"
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName: NimmaV
+      DisableApiTermination: 
+      ImageId: ami-028f2b5ee08012131
+      InstanceType: t2.micro
+      Monitoring: false
+      SecurityGroupIds:
+        - sg-0d6bbb7f95ab5c20f
