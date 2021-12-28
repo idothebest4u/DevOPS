@@ -5,7 +5,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       KeyName: NimmaV
-      DisableApiTermination: 
+      DisableApiTermination: false
       ImageId: ami-028f2b5ee08012131
       InstanceType: t2.micro
       Monitoring: false
