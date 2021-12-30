@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template for first CF
+Parameters: 
+  vpccidr:
+    Description: This is parameter values cidr
+    Type: String
+    Default: 192.168.0.0/24
+  subnetcidrranges:
+    Description: Subnet Ranges for CIDR
+    Type: List<String>
+    Default: 192.168.0.0/24,192.168.1.0/24,192.168.2.0/24,192.168.3.0/24
+  V1AZ:
+    Description: "Availability zone parameter for V1 AZ"
+    Type: AWS::EC2::AvailabilityZone::Name
+    Default: us-west-1
+  V2AZ:
+    Description: "AZ paramter for A2vz"
+    Type: List<AWS::EC2::AvailabilityZone::Name>
+    Default: us-west-2
+  M1AZ:
+    Description: "AZ for M1 AZ"
+    Type: List<AWS::EC2::AvailabilityZone::Name>
+    Default: us-east-1
+  M2AZ:
+    Description: "AZ parameter for M2AZ"
+    Type: List<AWS::EC2::AvailabilityZone::Name>
+    Default: us-east-2
+Resources:
+  MyFirstVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock:
+        Ref: vpccidr
+      EnableDnsHostnames: true
+      Tags:
+      - Key: Name
+        Value: First-VPC
+  V1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: 
+        Ref: V1AZ
+      VpcId:
+        Ref: MyFirstVPC
+      CidrBlock:
+        Ref: subnetcidrranges
+      Tags:
+      - Key: Name
+        Value: Vasu1
+  V2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+        Ref: V2AZ
+      VpcId: 
+        Ref: MyFirstVPC
+      CidrBlock:
+        Ref: subnetcidrranges
+      Tags:
+        - Key: Name
+          Value: Vasu2
+  M1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+        Ref: M1AZ
+      VpcId: 
+        Ref: MyFirstVPC
+      CidrBlock:
+        Ref: subnetcidrranges
+      Tags:
+        - Key: Name
+          Value: Man1
+  M2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+        Ref: M22AZ
+      VpcId: 
+        Ref: MyFirstVPC
+      CidrBlock:
+        Ref: subnetcidrranges
+      Tags:
+        - Key: Name
+          Value: Man2
