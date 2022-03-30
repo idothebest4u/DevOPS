@@ -1,0 +1,21 @@
+{
+	"name": "ms-folio",
+	"description": "ms-folio",
+	"templateId": "c486d066-e9ac-4ebe-8ddd-c6a310d5bcb7",
+	"templateVersion": "",
+	"componentType": "STANDARD",
+	"sourceConfigPlugin": "",
+	"importAutomatically": "false",
+	"useVfs": "true",
+	"defaultVersionType": "FULL",
+	"importAgentType": "inherit",
+	"inheritSystemCleanup": "true",
+	"runVersionCreationProcess": "false",
+	"properties": {},
+	"importProperties": {
+		"properties": {}
+	},
+	"teamMappings": [{
+		"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+	}]
+}

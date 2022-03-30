@@ -1,0 +1,93 @@
+{
+	"application": {
+		"name": "ms-folio",
+		"description": "",
+		"templateId": "47756720-784b-4afc-bfb3-eca69ffb8fb3",
+		"templateVersion": "",
+		"notificationSchemeId": "bdd39b45-4695-4f4e-a177-ed6899ec42e4",
+		"enforceCompleteSnapshots": "false",
+		"teamMappings": [{
+			"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+		}]
+	},
+	"components": {
+		"existingComponents": ["d4017746-2366-453e-8173-bf2c14fefc2d", "af3cfabc-ac02-4f2c-9b04-ef76b866e069"],
+		"newComponents": []
+	},
+	"environments": [{
+		"name": "DEV",
+		"templateId": "744c69de-baab-4783-a824-53228fa8ab16",
+		"templateVersion": 3,
+		"description": "",
+		"requireApprovals": false,
+		"noSelfApprovals": false,
+		"exemptProcesses": "",
+		"lockSnapshots": false,
+		"color": "#008ABF",
+		"teamMappings": [{
+			"resourceRoleId": "b6832d84-9707-42de-acf4-a8cb8fe1592c",
+			"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+		}],
+		"resources": []
+	}, {
+		"name": "QA",
+		"templateId": "93ea3d2f-c781-43d2-8600-8133cfd6030e",
+		"templateVersion": 7,
+		"description": "",
+		"requireApprovals": true,
+		"noSelfApprovals": true,
+		"exemptProcesses": "",
+		"lockSnapshots": false,
+		"color": "#00B2EF",
+		"teamMappings": [{
+			"resourceRoleId": "8766d5bf-dad2-4ebc-9bfa-7de0cd80336c",
+			"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+		}],
+		"resources": []
+	}, {
+		"name": "STG",
+		"templateId": "86ecdcbd-42e7-49d1-a974-8fc3fefd8242",
+		"templateVersion": 2,
+		"description": "",
+		"requireApprovals": false,
+		"noSelfApprovals": false,
+		"exemptProcesses": "",
+		"lockSnapshots": false,
+		"color": "#FDB813",
+		"teamMappings": [{
+			"resourceRoleId": "f2495cb1-2dea-46cf-9b99-eddf98a73196",
+			"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+		}],
+		"resources": []
+	}, {
+		"name": "STG02",
+		"templateId": "abc39bbf-26c5-44dc-9ee3-a3fe4871aaaa",
+		"templateVersion": 2,
+		"description": "",
+		"requireApprovals": false,
+		"noSelfApprovals": false,
+		"exemptProcesses": "",
+		"lockSnapshots": false,
+		"color": "#00B2EF",
+		"teamMappings": [{
+			"resourceRoleId": "f0e8ab92-f896-4fd9-ad36-5c2c25928385",
+			"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+		}],
+		"resources": []
+	}, {
+		"name": "UAT",
+		"templateId": "aa7c9bfa-e04d-4c52-b280-7045b4057518",
+		"templateVersion": 4,
+		"description": "",
+		"requireApprovals": true,
+		"noSelfApprovals": true,
+		"exemptProcesses": "",
+		"lockSnapshots": false,
+		"color": "#17AF4B",
+		"teamMappings": [{
+			"resourceRoleId": "96dc0a13-e591-449b-aeff-21f3cdf9e7a5",
+			"teamId": "ce08f0fc-b2e7-4df9-b713-f787d04be999"
+		}],
+		"resources": []
+	}]
+}
