@@ -1,0 +1,89 @@
+---
+- hosts: '{{ host }}'
+  gather_facts: no
+  become: yes
+  become_user: root
+  remote_user: ansible
+
+  tasks:
+
+    - name: stop agent service
+      shell: 	/opt/urbancode/agent/bin/agent stop
+      args:
+        executable: /bin/sh
+    - name: update bin/agent file
+      replace: 
+        path: /opt/urbancode/agent/bin/agent
+        regexp: '\"/usr/lib/jvm(.*)$'
+        replace: '"/usr/"'
+    - name: update bin/configure-agent file
+      replace: 
+        path: /opt/urbancode/agent/bin/configure-agent
+        regexp: '\"/usr/lib/jvm(.*)$'
+        replace: '"/usr/"'
+    - name: Check that the bin/upgrade.out exists
+      stat: path=/opt/urbancode/agent/bin/upgrade.out
+      register: result
+    - name: bin/upgrade.out file
+      replace: 
+        path: /opt/urbancode/agent/bin/upgrade.out
+        regexp: '\/usr/lib/jvm(.*)$'
+        replace: '/usr'
+      when: result.stat.exists == true
+    - name: update conf/agent/installed.properties file
+      replace: 
+        path: /opt/urbancode/agent/conf/agent/installed.properties
+        regexp: '\/usr/lib/jvm(.*)$'
+        replace: '/usr'
+# ################################################################################
+    - name: create start script
+      copy:
+        src: ./files/ibm-ucdagent
+        dest: /etc/rc.d/init.d/ibm-ucdagent
+        mode: 0777
+    - name: set unlevels 5
+      file:
+        src: /etc/rc.d/init.d/ibm-ucdagent
+        dest: /etc/rc.d/rc5.d/S98ibm-ucdagent
+        state: link
+        #ln -s /etc/rc.d/init.d/ibm-ucdagent /etc/rc.d/rc5.d/S98ibm-ucdagent
+    - name: set unlevels 4
+      file:
+        src: /etc/rc.d/init.d/ibm-ucdagent
+        dest: /etc/rc.d/rc4.d/S98ibm-ucdagent
+        state: link
+        #ln -s /etc/rc.d/init.d/ibm-ucdagent /etc/rc.d/rc4.d/S98ibm-ucdagent
+    - name: set unlevels 3
+      file:
+        src: /etc/rc.d/init.d/ibm-ucdagent
+        dest: /etc/rc.d/rc3.d/S98ibm-ucdagent
+        state: link
+        #ln -s /etc/rc.d/init.d/ibm-ucdagent /etc/rc.d/rc3.d/S98ibm-ucdagent
+    - name: start agent
+      service:
+        name: ibm-ucdagent
+        state: started  
+
+ ################################### Still in Process ####################################################         
+    
+    # - name: change permission of installation folder  
+      # file: dest=/opt/urbancode/ owner=urbancode group=urbancode recurse=yes        
+    # - name: start agent   
+      # shell: /sbin/service ibm-ucdagent start
+      # args:
+          # executable: /bin/sh
+    # - name: Stop agent
+      # service:
+        # name: ibm-ucdagent
+        # state: stopped 
+        # sleep: 100
+
+        
+    # - name: Check udeploy process
+      # shell: ps -ef | grep java | grep urbancode
+      # register: process
+      # ignore_errors: false
+    # # - debug: msg="udeploy Process is not running on {{ inventory_hostname }}"
+      # # when: process.rc = 0
+    # - debug: msg="udeploy Process is running on {{ inventory_hostname }}"
+      # when: process.stdout.find("urbancode") != 0
